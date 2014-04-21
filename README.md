@@ -1,8 +1,8 @@
 node-gyp-example
 ================
 
-write a simple nodejs addon 
-1. [v8 data structure]
+write a simple nodejs addon   
+1. [v8 data structure]  
 2. [node-cpp-modules]
 
 
