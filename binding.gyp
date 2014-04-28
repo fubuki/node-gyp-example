@@ -1,7 +1,7 @@
 {
   'targets': [
     {
-      'target_name': 'test_hello',
+      'target_name': 'hello',
       'sources': [ 'test_hello.cc' ]
     }
   ]
