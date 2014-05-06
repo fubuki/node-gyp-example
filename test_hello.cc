@@ -1,7 +1,9 @@
 #include <node.h>
 #include <v8.h>
+#include <string>
 
 using namespace v8;
+using namespace std; 
 
 Handle<Value> Method(const Arguments& args) {
   	HandleScope scope;
@@ -12,21 +14,27 @@ Handle<Value> detect(const Arguments& args) {
   	HandleScope scope;
   	Local<Value> arg = args[0];
   	bool isArray = arg->IsArray();
-	bool isBoolean = arg->IsBoolean();
 	bool isNumber = arg->IsNumber();
-	bool isInt32 = arg->IsInt32();
+	
+	String reault = "";
 
 	if (isNumber) {
-
-		return scope.Close(String::New("isNumber"));
+		reault = "isNumber";
 	} else if (isArray) {
-		return scope.Close(String::New("isArray"));
+		reault = "isArray";
 	} else {
-		return scope.Close(String::New("the other thing"));
+		reault = "the other thing";
 	}
+	
+	return scope.Close(String::New(reault));
+}
 
-
-  	
+Handle<Value> plus(const Arguments& args) {
+  	HandleScope scope;
+  	Local<Value> arg = args[0];
+  	Local<Number> number = arg->ToNumber();
+  	number++;
+	return scope.Close(Number::New(number));
 }
 
 
