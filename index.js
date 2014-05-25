@@ -15,3 +15,5 @@ var buffer = new Buffer(16);
 console.log('hello.length(3) =', hello.length(buffer));
 
 console.log('hello.transfer() =', hello.transfer());
+
+console.log('hello.add(1, 3) =', hello.add(1, 3));

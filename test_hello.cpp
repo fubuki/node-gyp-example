@@ -60,12 +60,41 @@ Handle<Value> transfer(const Arguments& args) {
   	return scope.Close(Buffer::New(String::New(a, 6))); //无法解析成utf-8或者iscii，转换错误
 }
 
+
+//加法
+Handle<Value> Add(const Arguments& args) {
+	HandleScope scope;
+	if(args.Length() < 2) {
+		ThrowException(Exception::TypeError(String::New("Wrong number of arguments")));
+		return scope.Close(Undefined());
+	}
+	if(!args[0]->IsNumber() || !args[1]->IsNumber()) {
+		ThrowException(Exception::TypeError(String::New("Wrong arguments")));
+		return scope.Close(Undefined());
+	}
+
+	Local<Number> num = Number::New(args[0]->NumberValue() + 
+	args[1]->NumberValue());
+	return scope.Close(num);
+}
+
+Handle<Value> Subtract(const Arguments& args) {
+
+}
+
+
 void init(Handle<Object> target) {
 	NODE_SET_METHOD(target, "hello", Method);
 	NODE_SET_METHOD(target, "detect", detect);
 	NODE_SET_METHOD(target, "plusNumber", plusNumber);
 	NODE_SET_METHOD(target, "length", length);
 	NODE_SET_METHOD(target, "transfer", transfer);
+
+	target->Set(String::NewSymbol("add"),
+	FunctionTemplate::New(Add)->GetFunction());
+	target->Set(String::NewSymbol("subtract"),
+	FunctionTemplate::New(Subtract)->GetFunction());
+
 }
 
 NODE_MODULE(hello, init);
