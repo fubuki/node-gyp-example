@@ -3,9 +3,9 @@ node-gyp-example
 
 write a simple nodejs addon   
 1. [v8 data structure]  
-2. [node-cpp-modules]
-3. [node-buffertools]
-4. [nan]
+2. [node-cpp-modules]  
+3. [node-buffertools]  
+4. [nan] 
 
 
 
